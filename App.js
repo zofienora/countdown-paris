@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 export default function App() {
   const [timeLeft, setTimeLeft] = useState('');
 
-  const targetDate = new Date('2025-08-30T15:00:00');
+  const targetDate = new Date('2025-08-28T15:00:00');
 
   useEffect(() => {
     const interval = setInterval(() => {
