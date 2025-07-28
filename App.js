@@ -33,7 +33,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Video
-        source={require('./assets/paris-background.mp4')}
+        source={require('./assets/liquid-black.mp4')}
         rate={1.0}
         volume={0}
         isMuted
@@ -43,7 +43,7 @@ export default function App() {
         style={StyleSheet.absoluteFill}
       />
       <View style={styles.overlay}>
-        <Text style={styles.title}>Paris with Bestie in...</Text>
+        <Text style={styles.title}>PARIS IN...</Text>
         <Text style={styles.countdown}>{timeLeft}</Text>
       </View>
     </View>
