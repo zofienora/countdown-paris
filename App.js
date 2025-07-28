@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Dimensions } from 'react-native';
+import { Video } from 'expo-av';
+
+const { width, height } = Dimensions.get('window');
 
 export default function App() {
   const [timeLeft, setTimeLeft] = useState('');
 
-  const targetDate = new Date('2025-08-28T15:00:00');
+  const targetDate = new Date('2025-08-30T15:00:00');
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -12,7 +15,7 @@ export default function App() {
       const diff = targetDate - now;
 
       if (diff <= 0) {
-        setTimeLeft("🎉 We're in Paris! 🎉");
+        setTimeLeft("🎉 You're in Paris! 🎉");
         clearInterval(interval);
       } else {
         const days = Math.floor(diff / (1000 * 60 * 60 * 24));
@@ -29,8 +32,20 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Paris in...</Text>
-      <Text style={styles.countdown}>{timeLeft}</Text>
+      <Video
+        source={require('./assets/paris-background.mp4')}
+        rate={1.0}
+        volume={0}
+        isMuted
+        resizeMode="cover"
+        shouldPlay
+        isLooping
+        style={StyleSheet.absoluteFill}
+      />
+      <View style={styles.overlay}>
+        <Text style={styles.title}>Paris with Bestie in...</Text>
+        <Text style={styles.countdown}>{timeLeft}</Text>
+      </View>
     </View>
   );
 }
@@ -38,7 +53,10 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#ffe6f0',
+    backgroundColor: 'black',
+  },
+  overlay: {
+    flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -46,9 +64,11 @@ const styles = StyleSheet.create({
     fontSize: 24,
     marginBottom: 20,
     fontWeight: 'bold',
+    color: 'white',
   },
   countdown: {
     fontSize: 32,
     fontWeight: 'bold',
+    color: 'white',
   },
 });
