@@ -9,7 +9,7 @@ export default function App() {
   const [fontsLoaded, setFontsLoaded] = useState(false);
   const [timeLeft, setTimeLeft] = useState('');
 
-  const targetDate = new Date('2025-08-30T15:00:00');
+  const targetDate = new Date('2025-08-28T15:00:00');
 
   const loadFonts = async () => {
     await Font.loadAsync({
